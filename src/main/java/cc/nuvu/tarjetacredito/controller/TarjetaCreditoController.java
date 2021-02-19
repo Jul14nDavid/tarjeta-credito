@@ -39,6 +39,17 @@ public class TarjetaCreditoController {
 		this.tarjetaCreditoBusiness.guardarTarjetaCredito(tarjetaCredito);
 	}
 	
+	@PostMapping("/persona/guardar")
+	@ApiOperation(value = "Guardar Tarjetas de Credito asociadas a una persona", response = void.class, httpMethod = "POST")
+	@ApiResponses({
+		@ApiResponse(code = 200, message = "Registros creados."),
+		@ApiResponse(code = 400, message = "Datos de entrada incorrectos."),
+		@ApiResponse(code = 500, message = "Error inesperado.")
+	})
+	public void guardarTarjetasCredito(@RequestBody List<TarjetaCredito> tarjetasCredito) {
+		this.tarjetaCreditoBusiness.guardarTarjetasCredito(tarjetasCredito);
+	}
+	
 	@GetMapping("/consultar")
 	@ApiOperation(value = "Consultar Tarjetas de Credito", response = TarjetaCredito.class, httpMethod = "GET", responseContainer = "List")
 	@ApiResponses({

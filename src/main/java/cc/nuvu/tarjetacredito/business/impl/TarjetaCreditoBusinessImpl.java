@@ -47,7 +47,11 @@ public class TarjetaCreditoBusinessImpl implements TarjetaCreditoBusiness {
 	@Override
 	public void eliminarTarjetaCredito(Long id) {
 		this.tarjetaCreditoRepository.deleteById(id);
-		
+	}
+
+	@Override
+	public void guardarTarjetasCredito(List<TarjetaCredito> tarjetasCredito) {
+		this.tarjetaCreditoRepository.saveAll(tarjetasCredito);
 	}
 
 }

@@ -54,6 +54,28 @@ public class TarjetaCreditoControllerTest {
 	}
 	
 	@Test
+	public void whenGuardarTarjetasCreditoThenReturnVoid() {
+		// Arrange
+		List<TarjetaCredito> tarjetas = new ArrayList<>();
+		tarjetas.add(
+			TarjetaCredito.builder()
+				.id(1L)
+				.idPersona(1L)
+				.numero("1234567890123456")
+				.fechaVencimiento(new Date())
+				.banco("Bancolombia")
+			.build()
+		);
+		
+		// Act
+		doNothing().when(this.tarjetaCreditoBusinessImpl).guardarTarjetasCredito(Mockito.any());
+		this.tarjetaCreditoController.guardarTarjetasCredito(tarjetas);
+		
+		// Assert
+		verify(this.tarjetaCreditoBusinessImpl, times(1)).guardarTarjetasCredito(tarjetas);
+	}
+	
+	@Test
 	public void whenConsultarTarjetaCreditosThenReturnTarjetaCreditoList() {
 		// Arrange
 		TarjetaCredito tarjetaCredito = TarjetaCredito.builder()
